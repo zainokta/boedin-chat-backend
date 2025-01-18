@@ -23,7 +23,7 @@ async fn main() -> std::io::Result<()> {
         clients: Arc::new(RwLock::new(HashMap::new())),
     });
 
-    println!("Server started at http://127.0.0.1:8080");
+    println!("Server started at http://0.0.0.0:8080");
 
     HttpServer::new(move || App::new().app_data(state.clone()).configure(routes::init))
         .bind("0.0.0.0:8080")?
