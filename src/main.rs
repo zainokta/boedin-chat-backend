@@ -26,7 +26,7 @@ async fn main() -> std::io::Result<()> {
     println!("Server started at http://127.0.0.1:8080");
 
     HttpServer::new(move || App::new().app_data(state.clone()).configure(routes::init))
-        .bind("127.0.0.1:8080")?
+        .bind("0.0.0.0:8080")?
         .run()
         .await
 }
