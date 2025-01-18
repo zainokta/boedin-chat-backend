@@ -4,4 +4,9 @@ WORKDIR /app
 COPY . .
 RUN cargo build --release
 
-CMD ["./target/release/imphnen-chat-backend"]
+FROM rust:slim-bookworm
+
+WORKDIR /app
+COPY --from=builder /app/target/release/imphnen-chat-backend ./imphnen-chat-backend
+
+CMD ["./imphnen-chat-backend"]
